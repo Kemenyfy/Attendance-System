@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Attendance_System
 {
-    public partial class Form1 : Form
+    public partial class LoginForm : Form
     {
-        public Form1()
+        public LoginForm()
         {
             InitializeComponent();
+        }
+
+        private void MetroLabel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
