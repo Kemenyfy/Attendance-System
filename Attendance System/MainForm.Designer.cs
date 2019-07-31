@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(818, 586);
             this.Name = "MainForm";
             this.Text = "Attendance System";
+            this.Activated += new System.EventHandler(this.MainForm_Activated);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 

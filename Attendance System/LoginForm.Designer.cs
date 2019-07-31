@@ -72,7 +72,6 @@
             this.metroLabel1.Size = new System.Drawing.Size(76, 20);
             this.metroLabel1.TabIndex = 4;
             this.metroLabel1.Text = "Username:";
-            this.metroLabel1.Click += new System.EventHandler(this.MetroLabel1_Click);
             // 
             // metroLabel2
             // 
@@ -90,6 +89,7 @@
             this.metroButtonLogin.Size = new System.Drawing.Size(96, 23);
             this.metroButtonLogin.TabIndex = 6;
             this.metroButtonLogin.Text = "Login";
+            this.metroButtonLogin.Click += new System.EventHandler(this.MetroButtonLogin_Click);
             // 
             // LoginForm
             // 
