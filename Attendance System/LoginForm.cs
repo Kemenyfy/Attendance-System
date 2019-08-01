@@ -13,6 +13,7 @@ namespace Attendance_System
     public partial class LoginForm : Form
     {
         public bool loginFlag { get; set; }
+        public int UserID { get; set; }
         public LoginForm()
         {
             InitializeComponent();
@@ -28,6 +29,7 @@ namespace Attendance_System
             {
                 //Valid Login
                 MessageBox.Show("Login Successful");
+                UserID = int.Parse(dt.Rows[0]["UserID"].ToString());
                 loginFlag = true;
             }
             else
