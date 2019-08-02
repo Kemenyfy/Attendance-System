@@ -48,5 +48,13 @@ namespace Attendance_System
             addClass.UserID = this.userID;
             addClass.ShowDialog();
         }
+
+        private void AddStudentsButton_Click(object sender, EventArgs e)
+        {
+            StudentsForm students = new StudentsForm();
+            students.ClassName = metroComboBox1.Text;
+            students.ClassID = (int)metroComboBox1.SelectedValue;
+            students.ShowDialog();
+        }
     }
 }
