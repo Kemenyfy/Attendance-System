@@ -32,6 +32,7 @@
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.GetValuesButton = new MetroFramework.Controls.MetroButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusLblUser = new System.Windows.Forms.ToolStripStatusLabel();
@@ -40,20 +41,24 @@
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.studentNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.attendanceRecordsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet1 = new Attendance_System.DataSet1();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.classesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet1 = new Attendance_System.DataSet1();
             this.classesTableAdapter = new Attendance_System.DataSet1TableAdapters.ClassesTableAdapter();
-            this.GetValuesButton = new MetroFramework.Controls.MetroButton();
+            this.attendanceRecordsTableAdapter = new Attendance_System.DataSet1TableAdapters.AttendanceRecordsTableAdapter();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.classesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.attendanceRecordsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.classesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -98,6 +103,15 @@
             this.metroTabPage2.Text = "Reports";
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             // 
+            // GetValuesButton
+            // 
+            this.GetValuesButton.Location = new System.Drawing.Point(427, 51);
+            this.GetValuesButton.Name = "GetValuesButton";
+            this.GetValuesButton.Size = new System.Drawing.Size(108, 23);
+            this.GetValuesButton.TabIndex = 12;
+            this.GetValuesButton.Text = "Get Values";
+            this.GetValuesButton.Click += new System.EventHandler(this.GetValuesButton_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -141,7 +155,7 @@
             // 
             // metroButton2
             // 
-            this.metroButton2.Location = new System.Drawing.Point(345, 127);
+            this.metroButton2.Location = new System.Drawing.Point(427, 126);
             this.metroButton2.Name = "metroButton2";
             this.metroButton2.Size = new System.Drawing.Size(75, 23);
             this.metroButton2.TabIndex = 8;
@@ -149,7 +163,7 @@
             // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(345, 98);
+            this.metroButton1.Location = new System.Drawing.Point(427, 98);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(75, 23);
             this.metroButton1.TabIndex = 7;
@@ -157,13 +171,44 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.studentNameDataGridViewTextBoxColumn,
+            this.statusDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.attendanceRecordsBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(15, 98);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(284, 266);
+            this.dataGridView1.Size = new System.Drawing.Size(405, 266);
             this.dataGridView1.TabIndex = 6;
+            // 
+            // studentNameDataGridViewTextBoxColumn
+            // 
+            this.studentNameDataGridViewTextBoxColumn.DataPropertyName = "StudentName";
+            this.studentNameDataGridViewTextBoxColumn.HeaderText = "StudentName";
+            this.studentNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.studentNameDataGridViewTextBoxColumn.Name = "studentNameDataGridViewTextBoxColumn";
+            this.studentNameDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // attendanceRecordsBindingSource
+            // 
+            this.attendanceRecordsBindingSource.DataMember = "AttendanceRecords";
+            this.attendanceRecordsBindingSource.DataSource = this.dataSet1;
+            // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "DataSet1";
+            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // metroLabel2
             // 
@@ -185,6 +230,7 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(220, 51);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
@@ -207,22 +253,13 @@
             this.classesBindingSource.DataMember = "Classes";
             this.classesBindingSource.DataSource = this.dataSet1;
             // 
-            // dataSet1
-            // 
-            this.dataSet1.DataSetName = "DataSet1";
-            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // classesTableAdapter
             // 
             this.classesTableAdapter.ClearBeforeFill = true;
             // 
-            // GetValuesButton
+            // attendanceRecordsTableAdapter
             // 
-            this.GetValuesButton.Location = new System.Drawing.Point(427, 51);
-            this.GetValuesButton.Name = "GetValuesButton";
-            this.GetValuesButton.Size = new System.Drawing.Size(75, 23);
-            this.GetValuesButton.TabIndex = 12;
-            this.GetValuesButton.Text = "Get Values";
+            this.attendanceRecordsTableAdapter.ClearBeforeFill = true;
             // 
             // MainForm
             // 
@@ -240,8 +277,9 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.classesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.attendanceRecordsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.classesBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -267,6 +305,10 @@
         private System.Windows.Forms.BindingSource classesBindingSource;
         private DataSet1TableAdapters.ClassesTableAdapter classesTableAdapter;
         private MetroFramework.Controls.MetroButton GetValuesButton;
+        private System.Windows.Forms.BindingSource attendanceRecordsBindingSource;
+        private DataSet1TableAdapters.AttendanceRecordsTableAdapter attendanceRecordsTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn studentNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
     }
 }
 
